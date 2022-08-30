@@ -12,10 +12,10 @@ services:
       - "./config/nginx/nginxCORS.conf:/usr/local/nginx/conf/nginx.conf"
     links:
       - "core:core"
-      - "ims:ims"
+      - "pims:pims"
 
   core:
-    image: cytomine/core:v4.1.0-beta.3
+    image: cytomine/core:v4.3.0-beta.2
     restart: unless-stopped
     ports: [ "8090:8080" ]
     volumes:
@@ -50,42 +50,13 @@ services:
     volumes:
       - "./config/memcached/memcached.conf:/etc/memcached.conf"
 
-  iipOff:
-    image: cytomine/iipofficial:v1.2.0
-    volumes:
-      - "./config/iipOff/nginx.conf.sample:/tmp/nginx.conf.sample"
-      - "/tmp/data/images:/data/images"
-    restart: unless-stopped
-    privileged: true
-    environment:
-      - NB_IIP_PROCESS=10
-
-  iipCyto:
-    image: cytomine/iipcyto:v1.2.2
-    volumes:
-      - "./config/iipCyto/nginx.conf.sample:/tmp/nginx.conf.sample"
-      - "/tmp/data/images:/data/images"
-    restart: unless-stopped
-    privileged: true
-    environment:
-      - NB_IIP_PROCESS=10
-
-  bioformat:
-    image: cytomineuliege/bioformat:v2.3.1
-    volumes:
-      - "/tmp/data/images:/data/images"
-    restart: unless-stopped
-    environment:
-      - BIOFORMAT_PORT=4321
-
-  ims:
-    image: cytomine/ims:v2.0.0
+  pims:
+    image: cytomine/pims:v0.12.3
     restart: unless-stopped
     volumes:
       - "/tmp/data/images:/data/images"
       - "/tmp/data/images/_buffer:/tmp/uploaded"
-      - "./config/ims/imageserverconfig.properties:/usr/share/tomcat9/.grails/imageserverconfig.properties"
-      - "./config/ims/ims-config.groovy:/usr/share/tomcat9/.grails/ims-config.groovy"
+      - "./config/pims/pims-config.env:/app/pims-config.env"
       - "./config/ims/addHosts.sh:/tmp/addHosts.sh"
     environment:
       - IMS_STORAGE_PATH=/data/images
