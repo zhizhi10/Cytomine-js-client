@@ -4,7 +4,7 @@ import DomainModel from './domain-model.js';
 export default class SnapshotFile extends DomainModel {
   /** @inheritdoc */
   static get callbackIdentifier() {
-    return 'attachedfile';
+    return 'snapshotfile';
   }
 
   /** @inheritdoc */

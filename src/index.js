@@ -66,7 +66,7 @@ export {default as GroupCollection} from './collections/group-collection.js';
 export {default as ImageConsultationCollection} from './collections/image-consultation-collection.js';
 export {default as ImageFilterCollection} from './collections/image-filter-collection.js';
 export {default as ImageFilterProjectCollection} from './collections/image-filter-project-collection.js';
-export {default as ImageInstanceCollection} from './coaddSnapshotFilellections/image-instance-collection.js';
+export {default as ImageInstanceCollection} from './collections/image-instance-collection.js';
 export {default as ImageServerCollection} from './collections/image-server-collection.js';
 export {default as JobCollection} from './collections/job-collection.js';
 export {default as JobDataCollection} from './collections/job-data-collection.js';
